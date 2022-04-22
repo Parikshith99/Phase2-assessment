@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+ form {margin:50px 400px;}
+ td {
+  padding: 15px;
+}
+ h1{text-align:center;}
+</style>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Login Page</title>
 </head>
 <body>
+<h1>Welcome To Learner's Academy</h1>
 <form action="ValidateServlet" method="post">
     <table>
       <tr>
         <td>User Name</td>
-        <td><input name="username"></td>
+        <td><input name="username" required></td>
       </tr>
       <tr>
         <td>password</td>
-        <td><input name="password"></td>
+        <td><input name="password" required></td>
       </tr>
        <tr>
         <td></td>
-        <td><input type="submit" value="Add"></td>
+        <td><input type="submit" value="Login" required></td>
       </tr>
     </table>
  </form>
+ 
 </body>
 </html>

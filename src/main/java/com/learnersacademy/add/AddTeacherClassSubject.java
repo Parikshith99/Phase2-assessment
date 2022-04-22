@@ -18,9 +18,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/addClassesSubjectsServlet")
-public class AddClassesSubjectsServlet extends HttpServlet {
+@WebServlet("/addTeacherClassesSubjectsServlet")
+public class AddTeacherClassSubject extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
 	private Connection connection;
 	public void init(ServletConfig sc) {
 		System.out.println("initializing addservlet...");
@@ -35,43 +36,44 @@ public class AddClassesSubjectsServlet extends HttpServlet {
 		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String teacherid = request.getParameter("teacherid");
 		String classname = request.getParameter("classname");
 		String subjectname = request.getParameter("subjectname");
-
+//		int classid = Integer.parseInt(request.getParameter("classid"));
 		PrintWriter out = response.getWriter();
 		try {
 			Statement statement1 = connection.createStatement();
 			Statement statement2 = connection.createStatement();
 			Statement statement3 = connection.createStatement();
-			// insert into user values ('joe', 'wilson', 'jwil@example.com', 'test1');
-			ResultSet rs = statement1.executeQuery("select SubjId from subjects where SubjName='" + subjectname + "'");
+			Statement statement4 = connection.createStatement();
+			ResultSet rt = statement1.executeQuery("select TeacherId from teachers where TeacherId='" + teacherid + "'");
 			ResultSet rc = statement2.executeQuery("select ClassId from classes where className='" + classname + "'");
-			if(rs.next() && rc.next()) {
-				ResultSet dv = statement3.executeQuery("select * from classsubject where class='" + rc.getInt(1) + "'and Subject='" + rs.getInt(1) + "'");
+			ResultSet rs = statement3.executeQuery("select SubjId from subjects where SubjName='" + subjectname + "'");
+			if(rt.next() && rc.next() && rs.next()) {
+				ResultSet dv = statement4.executeQuery("select * from teacherclasssubj where teacher='" + rt.getInt(1) + "'and class='" + rc.getInt(1) + "'and subject='" + rs.getInt(1) + "'");
 				if(!dv.next()) {
-					
 				
-				int result = statement2.executeUpdate("insert into classsubject values ('" + rc.getInt(1) + "', '" + rs.getInt(1) + "')");
+				int result = statement3.executeUpdate("insert into teacherclasssubj values  ('" + rt.getInt(1) + "', '" + rc.getInt(1) + "','" + rs.getInt(1) + "')");
 				if (result > 0) {
 					out.println("<h1>Added successfully</h1>");
-					RequestDispatcher rd = request.getRequestDispatcher("class_subject.html");
+					RequestDispatcher rd = request.getRequestDispatcher("teacher_class_subj.html");
 					rd.include(request, response);
 				} else {
-					out.println("<h1>Error creating the subject</h1>");
-					RequestDispatcher rd = request.getRequestDispatcher("class_subject.html");
+					out.println("<h1>Error creating the class</h1>");
+					RequestDispatcher rd = request.getRequestDispatcher("teacher_class_subj.html");
 					rd.include(request, response);
 				
 			}
-			}
+		}
 				else {
 					out.println("<h1>Data already present</h1>");
-					RequestDispatcher rd = request.getRequestDispatcher("class_subject.html");
+					RequestDispatcher rd = request.getRequestDispatcher("teacher_class_subj.html");
 					rd.include(request, response);
 				}
 		}
 			else {
 				out.println("<h1>First Create the data mentioned below!...Then try again</h1>");
-				RequestDispatcher rd = request.getRequestDispatcher("class_subject.html");
+				RequestDispatcher rd = request.getRequestDispatcher("teacher_class_subj.html");
 				rd.include(request, response);
 			}
 		} catch (SQLException e) {

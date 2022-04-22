@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+ form {margin:50px 400px;}
+ a{margin-left:40%;}
+ td {
+  padding: 15px;
+}
+</style>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Add Classes</title>
 </head>
 <body>
     <form action="addclassesServlet" method="post">
@@ -10,15 +17,15 @@
    
       <tr>
         <td>class Name</td>
-        <td><input name="classname"></td>
+        <td><input name="classname" required></td>
       </tr>
        <tr>
         <td></td>
-        <td><input type="submit" value="Add"></td>
+        <td><input type="submit" value="Add Class"></td>
       </tr>
     </table>
-    <br/><br/>
-    <a href="view_home.jsp">Go to main menu</a>
+   
  </form>
+    <h3><a href="view_home.jsp">Go to main menu</a></h3>
 </body>
 </html>

@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/ValidateServlet")
@@ -31,14 +32,14 @@ public class AdminValidateServlet extends HttpServlet {
 		
 			if (username.equals("admin") && password.equals("admin")) {
 				// successfull login
-				
+			
 				RequestDispatcher rd = request.getRequestDispatcher("/view_home.jsp");
 				rd.forward(request, response);
 			} else {
 				// unsuccessful login - incorrect email or incorrect password
 				PrintWriter out = response.getWriter();
 				response.setContentType("text/html");
-				out.println("<p>Login failed</p>");
+				out.println("<h1>Login failed</h1>");
 				RequestDispatcher rd = request.getRequestDispatcher("Login.html");
 				rd.include(request, response);
 			}

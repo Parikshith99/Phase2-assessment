@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+ form {margin:50px 400px;}
+ a{margin-left:40%;}
+ td {
+  padding: 15px;
+}
+</style>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Add Subjects</title>
 </head>
 <body>
-   <form action="addsubjectsServlet" method="post">
+
+   <form action="addsubjectsServlet" method="post" >
     <table>
       <tr>
         <td>Subject Name</td>
-        <td><input name="subjectname"></td>
+        <td><input name="subjectname" required></td>
       </tr>
+      
       <tr>
         <td>Department</td>
-        <td><input name="department"></td>
+        <td><input name="department" required></td>
       </tr>
        <tr>
         <td></td>
-        <td><input type="submit" value="Add"></td>
+        <td><input type="submit" value="Add Subject"></td>
       </tr>
     </table>
-    <br/><br/>
-    <a href="view_home.jsp">Go to main menu</a>
+    
  </form>
+    <h3><a href="view_home.jsp">Go to main menu</a></h3>
 </body>
 </html>

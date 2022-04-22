@@ -9,13 +9,17 @@
 }
 </style>
 <meta charset="ISO-8859-1">
-<title>Assign classes for subjects </title>
+<title>Assign teachers to a class for a subject</title>
 </head>
 <body>
-   <form action="addClassesSubjectsServlet" method="post">
+ <form action="addTeacherClassesSubjectsServlet" method="post">
     <table>
    
       <tr>
+        <td>Teacher Id</td>
+        <td><input name="teacherid" required></td>
+      </tr>
+       <tr>
         <td>class Name</td>
         <td><input name="classname" required></td>
       </tr>
@@ -28,8 +32,8 @@
         <td><input type="submit" value="Add"></td>
       </tr>
     </table>
- 
+  
  </form>
-    <h3><a href="view_home.jsp">Go to main menu</a></h3>
+   <h3><a href="view_home.jsp">Go to main menu</a></h3>
 </body>
 </html>
