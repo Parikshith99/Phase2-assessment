@@ -30,7 +30,6 @@ public class DisplayClassUtil extends HttpServlet {
 
 	
 	public void init(ServletConfig sc) {
-		System.out.println("initializing addservlet...");
 		ServletContext context = sc.getServletContext();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");

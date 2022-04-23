@@ -24,7 +24,6 @@ public class AddTeacherClassSubject extends HttpServlet {
        
 	private Connection connection;
 	public void init(ServletConfig sc) {
-		System.out.println("initializing addservlet...");
 		ServletContext context = sc.getServletContext();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");

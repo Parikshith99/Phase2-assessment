@@ -22,7 +22,6 @@ public class AddClassesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Connection connection;
 	public void init(ServletConfig sc) {
-		System.out.println("initializing addservlet...");
 		ServletContext context = sc.getServletContext();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
